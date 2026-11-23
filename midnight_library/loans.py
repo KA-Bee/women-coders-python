@@ -2,7 +2,7 @@
 from dataclasses import dataclass
 from datetime import date, datetime, timedelta
 
-from .fees import late_fee
+from .fees import discounted_late_fee
 from .members import can_borrow
 
 
@@ -46,7 +46,7 @@ def process_return(catalogue, member, book_id, when):
         l = [x for x in member.loans if x.book_id == book_id][0]
         d = (when.date() - l.borrowed_at.date()).days - 14 + 1
         if d > 0:
-            fee = late_fee(d)
+            fee = discounted_late_fee(d, member)
             member.late_returns += 1
         l.returned_at = when
         member.loans.remove(l)
