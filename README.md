@@ -23,6 +23,26 @@ pytest
 
 Try `python demo.py` for a quick tour.
 
+**Optional: the web frontend**
+
+There's also a browser version of the library in `web/`. It calls the real Python code, so any bug you see in the browser is a bug in the library. You'll need Node.js 18 or later.
+
+In one terminal, start the Python API:
+
+```bash
+python web/server.py
+```
+
+In a second terminal, start the website, then open http://localhost:5173:
+
+```bash
+cd web/frontend
+npm install
+npm run dev
+```
+
+Set the **library clock** to choose when things happen, pick who is **at the desk**, and watch the **night log** to see exactly what the Python code returned.
+
 ## What's in the code
 
 | File | What it does |
